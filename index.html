@@ -3,240 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swaras | Pure Moringa Detox & Natural Candies</title>
+    <title>Swaras | Premium Moringa Detox & Natural Candies</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root {
+            --primary: #164e63; /* Deep Teal/Green */
+            --accent: #10b981; /* Emerald */
+            --bg: #f8fafc;
+        }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fcfdfa;
+            background-color: var(--bg);
+            overflow-x: hidden;
         }
-        .serif {
-            font-family: 'Playfair Display', serif;
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Desktop specific refinements */
+        @media (min-width: 1024px) {
+            .hero-container { min-height: 90vh; }
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.85);
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
+
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        /* Fix for mobile overflow on the floating badge */
-        @media (max-width: 768px) {
-            .hero-badge {
-                position: relative !important;
-                bottom: 0 !important;
-                left: 0 !important;
-                margin-top: -2rem;
-                margin-left: 1rem;
-                max-width: calc(100% - 2rem) !important;
-            }
+
+        .hover-lift {
+            transition: transform 0.3s ease, shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-10px);
         }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="text-slate-900">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-4 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl md:rounded-full px-5 md:px-8 py-3 shadow-lg">
-            <div class="text-xl md:text-2xl font-bold tracking-tight text-emerald-900">
-                SWARAS<span class="text-emerald-500">.</span>
+    <nav class="fixed w-full z-[100] px-6 py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-nav rounded-2xl md:rounded-full px-8 py-4 shadow-xl shadow-emerald-900/5">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold">S</div>
+                <span class="text-2xl font-extrabold tracking-tighter text-emerald-950">SWARAS<span class="text-emerald-500">.</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest text-emerald-900/70">
-                <a href="#home" class="hover:text-emerald-600 transition-colors">Home</a>
-                <a href="#moringa" class="hover:text-emerald-600 transition-colors">Moringa</a>
-                <a href="#products" class="hover:text-emerald-600 transition-colors">Collection</a>
-                <a href="#contact" class="hover:text-emerald-600 transition-colors">Connect</a>
+            
+            <div class="hidden lg:flex items-center space-x-10 font-semibold text-sm uppercase tracking-widest text-emerald-900/60">
+                <a href="#home" class="hover:text-emerald-600 transition-all">Home</a>
+                <a href="#moringa" class="hover:text-emerald-600 transition-all">Moringa</a>
+                <a href="#products" class="hover:text-emerald-600 transition-all">Products</a>
+                <a href="#contact" class="hover:text-emerald-600 transition-all">Contact</a>
             </div>
-            <a href="https://wa.me/yournumber" class="bg-emerald-800 text-white px-5 py-2 rounded-full text-xs md:text-sm font-semibold hover:bg-emerald-700 transition-all shadow-md whitespace-nowrap">
-                Inquire Now
-            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/910000000000" class="hidden md:flex text-emerald-700 font-bold items-center gap-2 hover:opacity-70 transition-opacity">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i>
+                    <span>Inquiry</span>
+                </a>
+                <a href="#contact" class="bg-emerald-800 text-white px-6 py-3 rounded-xl font-bold hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-900/20 active:scale-95">
+                    Connect Now
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-50/50 -z-10 hidden lg:block"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="fade-in order-2 lg:order-1">
-                <span class="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">Nature's Finest Essence</span>
-                <h1 class="serif text-5xl md:text-7xl lg:text-8xl leading-tight text-emerald-950 mb-8">
-                    Revitalize with <br><i class="font-normal text-emerald-800">Pure Detox.</i>
+    <section id="home" class="hero-container relative flex items-center pt-32 pb-12 lg:pt-0 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <!-- Text Content -->
+            <div class="fade-in lg:pr-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    Authentic Wellness
+                </div>
+                <h1 class="serif text-6xl md:text-7xl lg:text-8xl leading-[1.1] text-emerald-950 mb-8 font-bold">
+                    Pure <span class="italic font-normal text-emerald-700">Moringa</span> <br>Detox Tea.
                 </h1>
-                <p class="text-base md:text-lg text-slate-600 mb-10 max-w-lg leading-relaxed">
-                    Swaras brings you the ancient wisdom of Moringa and the joy of natural treats, crafted with zero compromises on purity and health.
+                <p class="text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-lg">
+                    Rejuvenate your body with the nutrient-dense power of Swaras. Hand-crafted, organic, and designed for your daily detox ritual.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#moringa" class="bg-emerald-800 text-white px-8 py-4 rounded-xl font-bold hover:translate-y-[-2px] transition-all shadow-lg flex items-center text-sm md:text-base">
-                        Explore Benefits <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#products" class="bg-emerald-800 text-white px-10 py-5 rounded-2xl font-bold text-center hover:bg-emerald-700 transition-all shadow-2xl flex items-center justify-center gap-3 group">
+                        View Collection 
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                    <a href="#contact" class="border-2 border-emerald-800 text-emerald-800 px-8 py-4 rounded-xl font-bold hover:bg-emerald-50 transition-all text-sm md:text-base">
-                        Contact Us
-                    </a>
+                    <div class="flex items-center gap-4 p-2 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                        <div class="flex -space-x-3 px-2">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-emerald-200 flex items-center justify-center text-xs font-bold">JS</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-emerald-300 flex items-center justify-center text-xs font-bold">AM</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-emerald-400 flex items-center justify-center text-xs font-bold">RK</div>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-600 pr-4">500+ Happy Users</span>
+                    </div>
                 </div>
             </div>
-            <div class="relative fade-in order-1 lg:order-2">
-                <div class="aspect-[4/5] md:aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
-                    <img src="https://images.unsplash.com/photo-1544787210-2827255cb39e?auto=format&fit=crop&q=80&w=1000" alt="Moringa Detox Tea" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1515696955266-4f67e13219e8?auto=format&fit=crop&q=80&w=1000'">
+
+            <!-- Image Section -->
+            <div class="relative fade-in">
+                <div class="relative z-10 aspect-[4/5] lg:aspect-square rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(6,78,59,0.3)] border-[12px] border-white">
+                    <img src="https://images.unsplash.com/photo-1544787210-2827255cb39e?auto=format&fit=crop&q=80&w=1200" alt="Swaras Moringa" class="w-full h-full object-cover">
                 </div>
-                <!-- Floating Badge Fixed for Mobile -->
-                <div class="hero-badge absolute -bottom-6 -left-6 bg-white p-5 md:p-6 rounded-2xl shadow-xl max-w-[240px] border border-emerald-50 z-10">
-                    <div class="flex items-center text-emerald-600 mb-2">
-                        <i data-lucide="shield-check" class="w-5 h-5 mr-2"></i>
-                        <span class="font-bold text-sm">100% Organic</span>
+                
+                <!-- Fixed Badge - Safer Positioning -->
+                <div class="absolute -bottom-10 right-10 lg:-right-10 bg-white p-8 rounded-3xl shadow-2xl border border-emerald-50 max-w-[280px] z-20">
+                    <div class="flex items-center gap-3 mb-4 text-emerald-600">
+                        <div class="p-2 bg-emerald-100 rounded-lg"><i data-lucide="leaf" class="w-6 h-6"></i></div>
+                        <span class="font-black text-lg tracking-tight">100% ORGANIC</span>
                     </div>
-                    <p class="text-xs text-slate-500 leading-relaxed">Sourced directly from sustainable farms with absolutely no chemical additives.</p>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed">
+                        Purely sourced from organic farms. No preservatives, no additives, just nature.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Moringa Spotlight -->
-    <section id="moringa" class="py-24 bg-white">
+    <!-- Benefits / Why Moringa -->
+    <section id="moringa" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20 fade-in">
-                <h2 class="serif text-4xl md:text-5xl text-emerald-950 mb-6">The Power of Moringa</h2>
-                <p class="text-slate-600 text-lg">Often called the "Miracle Tree," Moringa is one of the most nutrient-dense plants on earth. We capture that power in every cup.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-3xl bg-emerald-50/50 border border-emerald-100/50 fade-in">
-                    <div class="w-12 h-12 bg-emerald-800 text-white rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="zap"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-emerald-900">Natural Vitality</h3>
-                    <p class="text-slate-600 leading-relaxed">Boosts stamina and mental clarity without the crash associated with caffeine or sugar.</p>
+            <div class="grid lg:grid-cols-2 gap-20 items-center mb-24">
+                <div class="fade-in">
+                    <h2 class="serif text-5xl md:text-6xl text-emerald-950 mb-8 leading-tight">The Miracle Tree <br><span class="text-emerald-600 italic">for Modern Life.</span></h2>
+                    <p class="text-xl text-slate-500 leading-relaxed mb-8">
+                        Moringa Oleifera is globally recognized as a nutritional powerhouse. Our specific processing technique ensures that the antioxidants and vitamins remain active until they reach your cup.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-bold text-emerald-900">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i> 7x more Vitamin C than Oranges
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-emerald-900">
+                            <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i> 15x more Potassium than Bananas
+                        </li>
+                    </ul>
                 </div>
-                <div class="p-8 rounded-3xl bg-emerald-50/50 border border-emerald-100/50 fade-in">
-                    <div class="w-12 h-12 bg-emerald-800 text-white rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="heart"></i>
+                <div class="grid grid-cols-2 gap-6 fade-in">
+                    <div class="bg-emerald-50 p-8 rounded-[2rem] hover-lift">
+                        <i data-lucide="battery-charging" class="w-10 h-10 text-emerald-700 mb-6"></i>
+                        <h4 class="font-bold text-xl mb-2">Instant Vitality</h4>
+                        <p class="text-sm text-slate-600">Clean energy boost without caffeine crashes.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-emerald-900">Digestive Health</h3>
-                    <p class="text-slate-600 leading-relaxed">High fiber content and natural anti-inflammatories support a healthy gut and better metabolism.</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-emerald-50/50 border border-emerald-100/50 fade-in">
-                    <div class="w-12 h-12 bg-emerald-800 text-white rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="sparkles"></i>
+                    <div class="bg-emerald-900 text-white p-8 rounded-[2rem] mt-8 hover-lift">
+                        <i data-lucide="shield" class="w-10 h-10 text-emerald-400 mb-6"></i>
+                        <h4 class="font-bold text-xl mb-2">Immune Guard</h4>
+                        <p class="text-sm text-emerald-100/70">Stronger defenses against daily toxins.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-emerald-900">Skin & Hair</h3>
-                    <p class="text-slate-600 leading-relaxed">Antioxidants fight free radicals, promoting glowing skin and stronger hair from within.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Side Products -->
-    <section id="products" class="py-24 bg-emerald-50/30">
+    <!-- Products Grid -->
+    <section id="products" class="py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center md:text-left mb-16 fade-in">
-                <h2 class="serif text-4xl md:text-5xl text-emerald-950 mb-4">Our Natural Collection</h2>
-                <p class="text-slate-600 max-w-xl">Traditional Indian treats reimagined with health as the first priority.</p>
+            <div class="text-center mb-20 fade-in">
+                <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm">Explore Our Range</span>
+                <h2 class="serif text-5xl md:text-6xl text-emerald-950 mt-4">The Swaras Collection</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Moringa Tea -->
-                <div class="product-card group fade-in">
-                    <div class="relative overflow-hidden rounded-3xl aspect-[4/5] mb-6 shadow-md">
-                        <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d51c?auto=format&fit=crop&q=80&w=800" alt="Moringa Tea" class="product-image w-full h-full object-cover transition-transform duration-700">
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-emerald-800 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Detox Hero</span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 product-grid">
+                <!-- Product 1 -->
+                <div class="fade-in group hover-lift">
+                    <div class="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d51c?auto=format&fit=crop&q=80&w=800" alt="Moringa Tea" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/60 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                            <span class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase">Best Seller</span>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-emerald-950 mb-2">Moringa Detox Tea</h3>
-                    <p class="text-slate-500">Pure, sun-dried Moringa leaves for your daily wellness ritual.</p>
+                    <h3 class="text-2xl font-bold text-emerald-950 mb-3">Moringa Detox Tea</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">The ultimate morning cleanse. Pure Moringa leaves sourced sustainably for peak potency.</p>
                 </div>
 
-                <!-- Mango Candy -->
-                <div class="product-card group fade-in" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden rounded-3xl aspect-[4/5] mb-6 shadow-md">
-                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&q=80&w=800" alt="Mango Candy" class="product-image w-full h-full object-cover transition-transform duration-700">
+                <!-- Product 2 -->
+                <div class="fade-in group hover-lift" style="transition-delay: 100ms;">
+                    <div class="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&q=80&w=800" alt="Mango Candy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-orange-950/40 to-transparent"></div>
                     </div>
-                    <h3 class="text-2xl font-bold text-emerald-950 mb-2">Pure Mango Candy</h3>
-                    <p class="text-slate-500">Real mango pulp, sun-dried to perfection. No artificial sweeteners.</p>
+                    <h3 class="text-2xl font-bold text-emerald-950 mb-3">Pure Mango Candy</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">Sun-dried real mango pulp. A healthy snack that tastes just like a fresh summer mango.</p>
                 </div>
 
-                <!-- Amla Candy -->
-                <div class="product-card group fade-in" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden rounded-3xl aspect-[4/5] mb-6 shadow-md">
-                        <img src="https://images.unsplash.com/photo-1495461199391-8c39ab674295?auto=format&fit=crop&q=80&w=800" alt="Amla Candy" class="product-image w-full h-full object-cover transition-transform duration-700">
+                <!-- Product 3 -->
+                <div class="fade-in group hover-lift" style="transition-delay: 200ms;">
+                    <div class="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-8 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1495461199391-8c39ab674295?auto=format&fit=crop&q=80&w=800" alt="Amla Candy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/40 to-transparent"></div>
                     </div>
-                    <h3 class="text-2xl font-bold text-emerald-950 mb-2">Amla Digestive Candy</h3>
-                    <p class="text-slate-500">Rich in Vitamin C, these candies are the perfect post-meal companion.</p>
+                    <h3 class="text-2xl font-bold text-emerald-950 mb-3">Amla Digestive Candy</h3>
+                    <p class="text-slate-500 mb-6 leading-relaxed">Powerhouse of Vitamin C. Sweet, sour, and perfectly spiced to aid your digestion naturally.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Connect Section -->
-    <section id="contact" class="py-24 px-4">
-        <div class="max-w-6xl mx-auto bg-emerald-950 text-white rounded-[2.5rem] overflow-hidden relative shadow-2xl">
-            <div class="grid lg:grid-cols-2">
-                <div class="p-10 md:p-16 fade-in">
-                    <h2 class="serif text-4xl md:text-5xl mb-6">Get in touch with <i class="text-emerald-400 font-normal">Swaras.</i></h2>
-                    <p class="text-emerald-100/70 mb-12 text-lg">We are here to help you choose the best products for your lifestyle. Connect with us anytime.</p>
+    <!-- Contact & Inquiry -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto bg-emerald-950 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(6,78,59,0.5)]">
+            <div class="grid lg:grid-cols-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 p-12 lg:p-20 text-white bg-emerald-900/40">
+                    <h2 class="serif text-5xl mb-8 leading-tight">Let's <br><span class="text-emerald-400 font-normal italic">Connect.</span></h2>
+                    <p class="text-emerald-100/60 text-lg mb-12">Reach out for bulk orders, product queries, or just to say hello! We usually respond within 2 hours.</p>
                     
-                    <div class="space-y-8">
-                        <a href="https://wa.me/919876543210" class="flex items-center group">
-                            <div class="w-12 h-12 bg-emerald-800 rounded-xl flex items-center justify-center mr-5 group-hover:bg-emerald-500 transition-colors">
-                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-6 group cursor-pointer">
+                            <div class="w-14 h-14 bg-emerald-800 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 transition-all">
+                                <i data-lucide="message-square"></i>
                             </div>
                             <div>
-                                <div class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">WhatsApp</div>
-                                <div class="text-lg md:text-xl">+91 98765 43210</div>
+                                <p class="text-xs font-bold text-emerald-400 uppercase tracking-widest">WhatsApp</p>
+                                <p class="text-xl">+91 98765 43210</p>
                             </div>
-                        </a>
-                        <a href="tel:+919876543210" class="flex items-center group">
-                            <div class="w-12 h-12 bg-emerald-800 rounded-xl flex items-center justify-center mr-5 group-hover:bg-emerald-500 transition-colors">
-                                <i data-lucide="phone" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <div class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">Direct Call</div>
-                                <div class="text-lg md:text-xl">+91 98765 43210</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center group">
-                            <div class="w-12 h-12 bg-emerald-800 rounded-xl flex items-center justify-center mr-5 group-hover:bg-emerald-500 transition-colors">
-                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex items-center gap-6 group cursor-pointer">
+                            <div class="w-14 h-14 bg-emerald-800 rounded-2xl flex items-center justify-center group-hover:bg-pink-500 transition-all">
+                                <i data-lucide="instagram"></i>
                             </div>
                             <div>
-                                <div class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">Instagram</div>
-                                <div class="text-lg md:text-xl">@swaras_wellness</div>
+                                <p class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Instagram</p>
+                                <p class="text-xl">@swaras_wellness</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-emerald-900/50 p-10 md:p-16 border-l border-white/5 fade-in">
-                    <h3 class="text-2xl font-bold mb-8 serif italic">Product Inquiry</h3>
-                    <form class="space-y-4" onsubmit="event.preventDefault();">
+
+                <!-- Form Section -->
+                <div class="lg:col-span-7 p-12 lg:p-20 bg-white">
+                    <h3 class="text-3xl font-bold text-emerald-950 mb-8 serif">Send us an Inquiry</h3>
+                    <form id="contactForm" class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Name</label>
-                            <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:outline-none focus:border-emerald-400 transition-colors">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Your Name</label>
+                            <input type="text" id="name" required class="w-full bg-slate-50 border-0 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Product of Interest</label>
-                            <select class="w-full bg-emerald-800 border border-white/10 rounded-xl px-5 py-3 focus:outline-none focus:border-emerald-400 text-white">
-                                <option>Moringa Detox Tea</option>
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Select Product</label>
+                            <select id="product" class="w-full bg-slate-50 border-0 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                                <option>Moringa Tea</option>
                                 <option>Mango Candy</option>
                                 <option>Amla Candy</option>
-                                <option>Bulk Inquiry</option>
                             </select>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-xs uppercase tracking-widest text-emerald-400 font-bold">Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 focus:outline-none focus:border-emerald-400 transition-colors"></textarea>
+                        <div class="md:col-span-2 space-y-2">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-widest">Your Message</label>
+                            <textarea id="message" rows="5" required class="w-full bg-slate-50 border-0 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"></textarea>
                         </div>
-                        <button class="w-full bg-emerald-400 text-emerald-950 font-bold py-4 rounded-xl hover:bg-white transition-all shadow-xl mt-4">Send Message</button>
+                        <button type="submit" class="md:col-span-2 bg-emerald-800 text-white font-bold py-5 rounded-2xl hover:bg-emerald-950 transition-all shadow-xl shadow-emerald-950/20 active:scale-95">
+                            Submit via Email
+                        </button>
                     </form>
                 </div>
             </div>
@@ -244,25 +273,28 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-emerald-100 pt-10">
-            <div class="text-xl font-bold tracking-tight text-emerald-950 mb-6 md:mb-0">
-                SWARAS<span class="text-emerald-500">.</span>
+    <footer class="py-20 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-emerald-800 rounded-xl flex items-center justify-center text-white font-bold">S</div>
+                <span class="text-3xl font-black tracking-tighter text-emerald-950">SWARAS</span>
             </div>
-            <div class="text-slate-400 text-sm">
-                &copy; 2024 Swaras Wellness Products.
+            <div class="text-slate-400 text-sm font-medium">
+                © 2024 Swaras Natural Products. All rights reserved.
             </div>
-            <div class="flex space-x-6 mt-6 md:mt-0">
-                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            <div class="flex gap-8">
+                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-slate-400 hover:text-emerald-600 transition-colors"><i data-lucide="mail"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
 
+        // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -272,6 +304,36 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // CONTACT FORM LOGIC
+        // This script collects the form data and opens the user's email client
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const product = document.getElementById('product').value;
+            const message = document.getElementById('message').value;
+            
+            // YOUR EMAIL HERE
+            const myEmail = "meetpatel177@gmail.com"; 
+            
+            const subject = encodeURIComponent(`Product Inquiry from ${name}`);
+            const body = encodeURIComponent(
+                `Hi Swaras Team,\n\n` +
+                `I am interested in: ${product}\n\n` +
+                `Message:\n${message}\n\n` +
+                `From: ${name}`
+            );
+            
+            // Redirects to user's mail app
+            window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+            
+            // UI feedback
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "Email Client Opening...";
+            setTimeout(() => { btn.innerText = originalText; }, 3000);
+        });
     </script>
 </body>
 </html>
